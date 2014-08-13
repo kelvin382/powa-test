@@ -52,8 +52,8 @@
 			<properties>
 				<liquibase.url>jdbc:oracle:thin:@//localhost</liquibase.url>
 				<liquibase.driver>oracle.jdbc.OracleDriver</liquibase.driver>
-				<liquibase.username>mpayme</liquibase.username>
-				<liquibase.password>mpaymetest</liquibase.password>
+				<liquibase.username>powainterview</liquibase.username>
+				<liquibase.password>powainterview</liquibase.password>
 				<changeLogFile>src/db.changelog-master.xml</changeLogFile>
 			</properties>
 		</profile>
