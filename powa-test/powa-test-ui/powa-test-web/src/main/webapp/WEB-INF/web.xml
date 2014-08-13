@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Production</param-value>
+  </context-param>
+    
+  <context-param>
+	<param-name>
+		javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
+	</param-name>
+	<param-value>false</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+    <!-- Websphere's default JSF implementation is MyFaces, not Mojarra whose default is false-->
+    <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>org.apache.myfaces.ERROR_HANDLING</param-name>
+  	<param-value>false</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>facelets.DEVELOPMENT</param-name>
+  	<param-value>false</param-value>
+  </context-param>
+  
+   <context-param>
+ 	 <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+ 	 <param-value>true</param-value>
+  </context-param>  
+    
+  <context-param>
+  	<param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
+  	<param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>org.apache.myfaces.NUMBER_OF_VIEWS_IN_SESSION</param-name>
+  	<param-value>50</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>org.apache.myfaces.NUMBER_OF_SEQUENTIAL_VIEWS_IN_SESSION</param-name>
+	<param-value>3</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>com.powa.application.mode</param-name>
+  	<param-value>TESTT</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>com.powa.captcha.key</param-name>
+  	<param-value>ZNAP_CAPTCHA</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+
+	<filter-mapping>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<url-pattern>/faces/*</url-pattern>
+	</filter-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.xhtml</welcome-file>
+
+	</welcome-file-list>
+</web-app>
