@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/global-template.xhtml">
+
+	<ui:define name="content-inner">
+		<h2>Credit Card Information</h2>
+		<h:form id="registrationForm">
+			<div class="row">
+				<h:outputLabel styleClass="span4">First Name</h:outputLabel>
+				<h:inputText id="firstName" styleClass="span8 input-small"
+					value="#{registration.form.firstName}" size="10" maxlength="64"
+					title="First Name" />
+			</div>
+
+
+			<div class="row">
+				<h:outputLabel styleClass="span4">Last Name</h:outputLabel>
+				<h:inputText id="lastName" styleClass="span8 input-small"
+					value="#{registration.form.lastName}" size="10" maxlength="64"
+					title="Last Name" />
+			</div>
+
+			<div class="row">
+				<h:outputLabel styleClass="span4">Country</h:outputLabel>
+				<h:selectOneMenu id="country" styleClass="span8 input-small"
+					value="#{registration.form.country}" size="10" maxlength="64"
+					title="Country">
+					<f:selectItems
+						value="#{registration.staticDataService.countryAlpha3Code}" />
+				</h:selectOneMenu>
+			</div>
+
+			<div>
+				<h:commandButton type="value" value="Submit"
+					action="#{registration.register()}" />
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

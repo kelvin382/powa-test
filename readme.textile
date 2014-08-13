@@ -1,3 +1,105 @@
-h1. Assembla.readme
+h1. POWA Sample Project
 
-In assembla you can use "textile(Textile Basics)":http://bit.ly/textile-basics, "html(Html Basics)":http://bit.ly/html-basics or "markdown(Markdown Basics)":http://bit.ly/markdown-basics to add some sugar to your readme files. Just add the extention to your readme file, so we can recognize the markup you want to use!
+%{color:red}Below are background information only. Tasks which you need to do are listed in the "Task / TODO" section near the end.%
+
+h2. Overview
+
+This projects mimick our current technology stack as well as development supporting tools, which are based on existing technologies and tools. The goal is to assess whether candidates are familiar with these technology
+
+h3. Technology Stack
+
+* JSF 2.0 (MyFace)
+* EJB 3.1
+* Hibernate 4.x
+* JUnit
+* WebSphere 8.5 (installed on test laptop at C:\IBM\WebSphere\AppServer)
+* Oracle 11g XE (installed on test laptop at C:\oraclexe)
+
+h3. Development Tools
+
+* Maven 3 - (installed at c:\dev\apps\apache-maven-3.0.5 and the mvn command is added to the system path)
+* Subversion - (Use the subversive, SVN client, installed within eclipse)
+* Eclipse IDE - (shortcut to eclipse is on the laptop)
+* Liquibase for Database Versioning
+
+h2. Architecture
+
+We separate our Web Tier and Service Tier via a Java API
+
+Web Tier > API > Service Tier
+
+Web Tier is packaged under the project:
+  @+- powa-test@
+  @+--+- powa-test-db@  *<< Liquibase create and seed data*
+  @+--+- powa-test-service-api@ *<< API project*
+  @+--+- powa-test-service@ *<< Service tier project*
+  @+--+- powa-test-ui@  *<< Web Tier project*
+
+h2. Equipment Setup
+
+You should have a labtop with the following setup for you
+
+* Internet access
+* Eclipse (With Required Plugins, including Subversive, M2E, etc)
+* Websphere 8.5
+* Oracle XE
+
+h1. Environment Setup and Background Information
+
+h2. Oracle Database Information 
+
+The software communicate with Oracle database. A database account has been created for your local database with the following credentials:
+
+* *Username:* powainterview
+* *Password:* powainterview
+
+h2. WAS setup to use JDK 7
+
+Our application is compile against JDK 1.7. The WAS instance on the machine should have been configured to use JDK 1.7 instead (default is 1.6). To switch the JDK, run the managesdk.bat command in @WAS_HOME/AppServer/bin@
+
+bq. @managesdk.bat -enableProfile -profileName AppSrv01 -sdkname 1.7_64 -enableServers@
+
+h2. WAS dataSource setup
+
+The software lookup the dataSource via the @persistence.xml@ file in the under the DAO project. You can examine the JNDI lookup name by referencing the file.
+
+To access the web page, after you have deploy it into WAS, it you can visit the link http://localhost:9080/powa-test-web
+
+h1. Task / TODO
+
+h2. Checkout project from SVN
+
+Check out the project from SVN at the following location:
+
+bq. https://subversion.assembla.com/svn/powa-test/trunk/powa-test
+
+h2. Import Source to Eclipse
+
+You will need to import the source code into eclipse as "Existing Maven Projects". Import the project from the root directory specified above.
+
+h2. Install Oracle JDBC into your Maven Repository
+
+Oracle JDBC file is not available from the Maven Central repository. Manually install the ojdbc5.jar file. The file should be on your desktop. If not, you may download the file from Oracle at:
+
+bq. http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html
+
+h2. Initialize and populate the database
+
+We use liquibase to manage the data schema for the application. To create the database schema, in the powa-test-db project, run:
+
+bq. @mvn liquibase:update@
+  
+If you need to recreate you database schema, you may run:
+
+bq. @mvn liquibase:dropAll liquibase:update@
+
+For more information on liquibase, see http://www.liquibase.org
+
+To verify that you have the database setup properly, you can run the junit @BasicEntityTest@ test in the @powa-test-dao@ project.
+
+h2. Fix NullPointerException 
+
+After visiting the http://localhost:9080/powa-test-web, click the blue Sign-up button. You will see a page where the "Country" field dropdown is empty. If your examine the System.out (located at: C:\IBM\WebSphere\AppServer\profiles\AppSrv01\logs\server1) log, there is an EJBException wrapping a NullPointerException.
+
+Your task is to fixed the NullPointerException. The drop down should be populated from the COUNTRY table in the database via the service then
+DAO tier.
