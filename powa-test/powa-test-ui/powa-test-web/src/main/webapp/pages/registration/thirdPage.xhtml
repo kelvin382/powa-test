@@ -8,33 +8,62 @@
 		<h2>Credit Card Information</h2>
 		<h:form id="registrationForm">
 			<div class="row">
-				<h:outputLabel styleClass="span4">First Name</h:outputLabel>
-				<h:inputText id="firstName" styleClass="span8 input-small"
-					value="#{registration.form.firstName}" size="10" maxlength="64"
-					title="First Name" />
-			</div>
-
-
-			<div class="row">
-				<h:outputLabel styleClass="span4">Last Name</h:outputLabel>
-				<h:inputText id="lastName" styleClass="span8 input-small"
-					value="#{registration.form.lastName}" size="10" maxlength="64"
-					title="Last Name" />
-			</div>
-
-			<div class="row">
-				<h:outputLabel styleClass="span4">Country</h:outputLabel>
-				<h:selectOneMenu id="country" styleClass="span8 input-small"
-					value="#{registration.form.country}" size="10" maxlength="64"
-					title="Country">
-					<f:selectItems
-						value="#{registration.staticDataService.countryAlpha3Code}" />
+				<h:outputLabel styleClass="span4">Card Type</h:outputLabel>
+				<h:selectOneMenu id="cardType" styleClass="span8 input-small"
+					value="#{registration.form.cardType}" title="Card Type">
+					<f:selectItem itemValue="VISA" itemLabel="Visa" />
+					<f:selectItem itemValue="MC" itemLabel="MasterCard" />
+					<f:selectItem itemValue="AMEX" itemLabel="American Express" />
 				</h:selectOneMenu>
 			</div>
 
+			<div class="row">
+				<h:outputLabel styleClass="span4">Card Number</h:outputLabel>
+				<h:inputText id="cardNumber" styleClass="span8 input-small"
+					value="#{registration.form.cardNumber}" size="16" maxlength="16"
+					title="Card Number" />
+			</div>
+
+			<div class="row">
+				<h:outputLabel styleClass="span4">Expiration Date</h:outputLabel>
+				<h:selectOneMenu id="expiryMonth" styleClass="span4 input-small"
+					value="#{registration.form.expiryMonth}" title="Expiry Month">
+					<f:selectItem itemValue="01" itemLabel="01 - January" />
+					<f:selectItem itemValue="02" itemLabel="02 - February" />
+					<f:selectItem itemValue="03" itemLabel="03 - March" />
+					<f:selectItem itemValue="04" itemLabel="04 - April" />
+					<f:selectItem itemValue="05" itemLabel="05 - May" />
+					<f:selectItem itemValue="06" itemLabel="06 - June" />
+					<f:selectItem itemValue="07" itemLabel="07 - July" />
+					<f:selectItem itemValue="08" itemLabel="08 - August" />
+					<f:selectItem itemValue="09" itemLabel="09 - September" />
+					<f:selectItem itemValue="10" itemLabel="10 - October" />
+					<f:selectItem itemValue="11" itemLabel="11 - November" />
+					<f:selectItem itemValue="12" itemLabel="12 - December" />
+				</h:selectOneMenu>
+				<h:selectOneMenu id="expiryYear" styleClass="span4 input-small"
+					value="#{registration.form.expiryYear}" title="Expiry Year">
+					<f:selectItem itemValue="2023" itemLabel="2023" />
+					<f:selectItem itemValue="2024" itemLabel="2024" />
+					<f:selectItem itemValue="2025" itemLabel="2025" />
+					<f:selectItem itemValue="2026" itemLabel="2026" />
+					<f:selectItem itemValue="2027" itemLabel="2027" />
+					<f:selectItem itemValue="2028" itemLabel="2028" />
+				</h:selectOneMenu>
+			</div>
+			
+			<div class="row">
+				<h:outputLabel styleClass="span4">CVV</h:outputLabel>
+				<h:inputText id="cvv" styleClass="span8 input-small"
+					value="#{registration.form.cvv}" size="3" maxlength="4"
+					title="CVV" />
+			</div>
+
 			<div>
-				<h:commandButton type="value" value="Submit"
-					action="#{registration.register()}" />
+				<h:commandButton type="value" value="Back"
+					action="#{registration.toSecondPage()}" styleClass="btn" />
+				<h:commandButton type="value" value="Register"
+					action="#{registration.register()}" styleClass="btn btn-primary" />
 			</div>
 		</h:form>
 	</ui:define>

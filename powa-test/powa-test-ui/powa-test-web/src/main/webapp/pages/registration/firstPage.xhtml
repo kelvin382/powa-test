@@ -21,20 +21,38 @@
 					value="#{registration.form.lastName}" size="10" maxlength="64"
 					title="Last Name" />
 			</div>
-
+			
 			<div class="row">
-				<h:outputLabel styleClass="span4">Country</h:outputLabel>
-				<h:selectOneMenu id="country" styleClass="span8 input-small"
-					value="#{registration.form.country}" size="10" maxlength="64"
-					title="Country">
-					<f:selectItems
-						value="#{registration.staticDataService.countryAlpha3Code}" />
-				</h:selectOneMenu>
+				<h:outputLabel styleClass="span4">Email</h:outputLabel>
+				<h:inputText id="email" styleClass="span8 input-small"
+					value="#{registration.form.email}" size="10" maxlength="64"
+					title="Email" />
+			</div>
+			
+			<div class="row">
+				<h:outputLabel styleClass="span4">Mobile</h:outputLabel>
+				<h:inputText id="mobile" styleClass="span8 input-small"
+					value="#{registration.form.mobile}" size="10" maxlength="64"
+					title="Mobile" />
+			</div>
+			
+			<div class="row">
+				<h:outputLabel styleClass="span4">Password</h:outputLabel>
+				<h:inputSecret id="password" styleClass="span8 input-small"
+					value="#{registration.form.password}" size="10" maxlength="64"
+					title="Password" />
+			</div>
+			
+			<div class="row">
+				<h:outputLabel styleClass="span4">Confirm Password</h:outputLabel>
+				<h:inputSecret id="confirmPassword" styleClass="span8 input-small"
+					value="#{registration.form.confirmPassword}" size="10" maxlength="64"
+					title="Confirm Password" />
 			</div>
 
 			<div>
-				<h:commandButton type="value" value="Submit"
-					action="#{registration.toSecondPage()}" />
+				<h:commandButton type="value" value="Next"
+					action="#{registration.toSecondPage()}" styleClass="btn btn-primary" />
 			</div>
 		</h:form>
 	</ui:define>
