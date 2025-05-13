@@ -3,33 +3,26 @@ package com.powa.test.web.model;
 public class UserRegistrationForm {
 	
 	// page 1
-
 	private String firstName;
-	
 	private String lastName;
-	
 	private String email;
-	
 	private String mobile;
-	
 	private String password;
-	
 	private String confirmPassword;
 	
 	// page 2
-	
 	private String address1;
-	
 	private String address2;
-	
 	private String city;
-	
 	private String state;
-	
 	private String country;
 	
 	// page 3
-	
+	private String cardType;
+	private String cardNumber;
+	private String expiryMonth;
+	private String expiryYear;
+	private String cvv;
 	
 	// getters/setters
 
@@ -120,5 +113,44 @@ public class UserRegistrationForm {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
+	public String getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getExpiryMonth() {
+		return expiryMonth;
+	}
+
+	public void setExpiryMonth(String expiryMonth) {
+		this.expiryMonth = expiryMonth;
+	}
+
+	public String getExpiryYear() {
+		return expiryYear;
+	}
+
+	public void setExpiryYear(String expiryYear) {
+		this.expiryYear = expiryYear;
+	}
+
+	public String getCvv() {
+		return cvv;
+	}
+
+	public void setCvv(String cvv) {
+		this.cvv = cvv;
+	}
 }
